@@ -1,0 +1,93 @@
+/*
+Error: Undefined mixin 'prefix'.
+        on line 18 of ./public/stylesheets/sass/base-layout.scss, in `prefix'
+        from line 18 of ./public/stylesheets/sass/base-layout.scss
+
+13: }
+14: 
+15: .vehicles {
+16:   background: #aaa;
+17:   width: 22rem;
+18:   @include prefix((
+19:     transition: width 0.3s ease-in-out
+20:   ));
+21: 
+22:   @media (max-width: 52rem) {
+23:     width: 100%;
+
+Backtrace:
+./public/stylesheets/sass/base-layout.scss:18:in `prefix'
+./public/stylesheets/sass/base-layout.scss:18
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:351:in `block in visit_mixin'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `block in with_mixin'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `with_mixin'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:349:in `visit_mixin'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/plugin/rack.rb:51:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/nulllogger.rb:9:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/tempfile_reaper.rb:15:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/lint.rb:49:in `_call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/lint.rb:37:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:24:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/chunked.rb:54:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rack-1.6.4/lib/rack/content_length.rb:15:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/puma-3.6.0/lib/puma/configuration.rb:225:in `call'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/puma-3.6.0/lib/puma/server.rb:578:in `handle_request'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/puma-3.6.0/lib/puma/server.rb:415:in `process_client'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/puma-3.6.0/lib/puma/server.rb:275:in `block in run'
+/Users/aaron/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/puma-3.6.0/lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'prefix'.\A         on line 18 of ./public/stylesheets/sass/base-layout.scss, in `prefix'\A         from line 18 of ./public/stylesheets/sass/base-layout.scss\A \A 13: }\A 14: \A 15: .vehicles {\A 16:   background: #aaa;\A 17:   width: 22rem;\A 18:   @include prefix((\A 19:     transition: width 0.3s ease-in-out\A 20:   ));\A 21: \A 22:   @media (max-width: 52rem) {\A 23:     width: 100%;"; }
