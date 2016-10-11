@@ -3,12 +3,8 @@
   Build using a modified version of Solid by Buzz Feed
 */
 
-
-// Solid
-@import "solid-helpers";
-@import "solid-base";
-@import "solid-utilities";
-@import "solid-components";
+// Import Solid
+@import "solid/solid";
 
 // Lunar Locator
 @import "base-layout";
