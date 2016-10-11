@@ -1,5 +1,5 @@
 .app {
-
+  @include font-smoothing;
 }
 
 .header {
@@ -13,25 +13,41 @@
 }
 
 .vehicles {
-  background: #aaa;
   width: 22rem;
-  @include prefix((
-    transition: width 0.3s ease-in-out
-  ));
+  @include prefix((transition: width 0.3s ease-in-out));
+  @include prefix((transition: margin-left 0.3s ease-in-out));
 
   @media (max-width: 52rem) {
     width: 100%;
+
+    .show-detail & {
+      margin-left: -50%;
+    }
+  }
+}
+
+.vehicle {
+  padding: 0.875rem;
+
+  h2 {
+    line-height: 1;
   }
 }
 
 .vehicle-detail {
   background: #ccc;
   margin-left: 22rem;
-  @include prefix((
-    transition: margin-left 0.3s ease-in-out
-  ));
+  @include prefix((transition: margin-left 0.3s ease-in-out));
 
   @media (max-width: 52rem) {
-    margin-left: 100%
+    margin-left: 100%;
+
+    .show-detail & {
+      margin-left: 0;
+    }
   }
+}
+
+.power-guage {
+  height: 0.75rem;
 }
