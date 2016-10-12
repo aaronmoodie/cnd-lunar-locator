@@ -68,7 +68,7 @@ app.VehicleList = Backbone.Collection.extend({
 app.VehicleItemView = Backbone.View.extend({
   tagName: 'li',
   events: {
-    'click [data-event="show-detail"]': 'showDetial'
+    'click [data-event="show-detail"]': 'showDetail'
   },
   initialize: function() {
     _.bindAll(this, 'render');
@@ -80,7 +80,7 @@ app.VehicleItemView = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
-  showDetial: function(event) {
+  showDetail: function(event) {
     var $element = $(event.currentTarget);
     $('.app').addClass('show-detail');
     $('.vehicle').removeClass('active');
