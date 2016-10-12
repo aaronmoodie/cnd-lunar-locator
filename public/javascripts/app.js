@@ -13,6 +13,7 @@ var app = app || {};
 // Vehicle model
 app.VehicleItem = Backbone.Model.extend({
   defaults: {
+    vehicle_id: 0,
     lat: 0.681400,
     long: 23.460550,
     name: "Command Center",

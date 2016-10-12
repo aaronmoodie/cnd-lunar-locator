@@ -8,6 +8,7 @@
 
   .close-detail {
     opacity: 0;
+    padding: 1rem 0.8rem;
     @media (max-width: 52rem) {
       .show-detail & {
         opacity: 1

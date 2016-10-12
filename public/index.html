@@ -12,7 +12,7 @@
   <script type="text/template" id="vehicle-item-template">
     <div data-event="show-detail" class="vehicle xs-border-top clearfix">
       <div class="xs-float-left xs-mr2">
-        <img src="" height="46" width="46" class="fill-gray" />
+        <img src="/images/lunar-<%= vehicle_id %>.jpg" height="46" width="46" />
       </div>
       <div class="xs-overflow-hidden">
         <h2 class="xs-mb1"><%= name %></h2>
@@ -28,7 +28,7 @@
   <!-- manual locate template -->
   <script type="text/template" id="manual-locate-template">
     <p class="xs-text-center xs-text-5 text-gray-lightest">
-      <a data-event="show-form" href="#" class="link-gray xs-p2 xs-block">Locate manually</a>
+      <a data-event="show-form" href="#" class="link-gray xs-p2 xs-block"><i class="fa fa-location-arrow" aria-hidden="true"></i> Locate manually</a>
     </p>
     <form>
       <div class="xs-mb2">
@@ -50,7 +50,7 @@
   <script type="text/template" id="vehicle-detail-template">
     <div class="vehicle xs-border-bottom clearfix xs-absolute xs-t0 xs-l0 xs-r0">
       <div class="xs-float-left xs-mr2">
-        <img src="" height="46" width="46" class="fill-gray" />
+        <img src="/images/lunar-<%= vehicle_id %>.jpg" height="46" width="46" />
       </div>
       <div class="xs-overflow-hidden">
         <h2 class="xs-mb1"><%= name %></h2>
@@ -64,7 +64,7 @@
     <div class="map-wrapper xs-absolute xs-b0 xs-l0 xs-r0">
       <div id="map" class="map xs-absolute xs-t0 xs-b0 xs-l0 xs-r0"></div>
       <div class="xs-absolute xs-t3 xs-l0 xs-r0 xs-text-center">
-        <span class="distance fill-white xs-text-5 xs-pt1 xs-pb1 xs-pl2 xs-pr2"> <%= distance_to_cmd %>kms from Command Centre</span>
+        <span class="distance fill-white xs-text-5 xs-pt1 xs-pb1 xs-pl2 xs-pr2"><i class="fa fa-lg fa-map-marker xs-pr1" aria-hidden="true"></i><%= distance_to_cmd %>kms from Command Centre</span>
       </div>
     </div>
   </script>
@@ -75,7 +75,7 @@
     <div class="header xs-text-center fill-blue xs-absolute xs-t0 xs-l0">
       <!-- <button data-event="close-detail" type="button" name="close" class="close-detail xs-p2 xs-absolute xs-t0 xs-l0">Back</button> -->
       <h2 class="bold xs-pt2 xs-pb2 text-white">Lunar Vehicles</h2>
-      <a data-event="close-detail" href="#" class="close-detail xs-p2 xs-absolute xs-t0 xs-l0 text-white">Back</a>
+      <a data-event="close-detail" href="#" class="close-detail xs-absolute xs-t0 xs-l0 text-white"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></a>
     </div>
     <div class="content xs-absolute xs-overflow-hidden xs-b0 xs-l0">
       <!-- Vehicle items container -->
