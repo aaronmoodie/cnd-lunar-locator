@@ -24,6 +24,16 @@ app.attributes = function(prop, value) {
 
 // Vehicle model
 app.VehicleItem = Backbone.Model.extend({
+  initialize: function() {
+    var power = this.get('power_level_percent');
+    if (power > 50) {
+      this.set("color", "green");
+    } else if (power < 50 && power > 20) {
+      this.set("color", "orange");
+    } else {
+      this.set("color", "red");
+    }
+  }
 
 });
 
@@ -41,7 +51,9 @@ app.VehicleList = Backbone.Collection.extend({
 // Vehicle item view
 app.VehicleItemView = Backbone.View.extend({
   tagName: 'li',
-  events: {},
+  events: {
+    'click [data-event="show-detail"]': 'showDetial'
+  },
   initialize: function() {
     _.bindAll(this, 'render');
     this.model.bind('change', this.render);
@@ -51,6 +63,17 @@ app.VehicleItemView = Backbone.View.extend({
     var renderedContent = this.template(this.model.toJSON());
     this.$el.html(renderedContent);
     return this;
+  },
+  showDetial: function(event) {
+    var $element = $(event.currentTarget);
+    $('.app').addClass('show-detail');
+    $('.vehicle').removeClass('active');
+    $element.addClass('active');
+    var latLong = {
+      lat: this.model.get('lat'),
+      lng: this.model.get('long')
+    };
+    app.mapView.addMarker(latLong);
   }
 
 });
@@ -62,14 +85,16 @@ app.VehicleDetailView = Backbone.View.extend({
 
 // Map view
 app.MapView = Backbone.View.extend({
+
   initialize: function(options) {
     var _this = this;
-    var map = new google.maps.Map(document.getElementById('map'), {
+    this.markers = [];
+    this.map = new google.maps.Map(document.getElementById('map'), {
       center: options.cmdCentreCoords,
       zoom: 6,
       streetViewControl: false,
       mapTypeControlOptions: {
-        mapTypeIds: ['moon']
+        mapTypeIds: ['none']
       }
     });
     var moonMapType = new google.maps.ImageMapType({
@@ -90,17 +115,42 @@ app.MapView = Backbone.View.extend({
       name: 'Moon'
     });
 
-    map.mapTypes.set('moon', moonMapType);
-    map.setMapTypeId('moon');
+    this.map.mapTypes.set('moon', moonMapType);
+    this.map.setMapTypeId('moon');
 
-    this.addMarker(options.cmdCentreCoords, map, "Comand Center");
+    // add initial maker to the map
+    this.addMarker(options.cmdCentreCoords);
+
+    // center map on browser resize
+    // google.maps.event.addDomListener(window, 'resize', function() {
+    //   map.setCenter(center);
+    // });
   },
-  addMarker: function(position, map, title) {
+  addMarker: function(position) {
+    this.deleteMarkers();
     var marker = new google.maps.Marker({
       position: position,
-      map: map,
-      title: title
+      map: this.map
     });
+    this.map.setCenter(position);
+    this.markers.push(marker);
+    this.showMarkers();
+
+  },
+  setMapOnAll: function(map) {
+    for (var i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(map);
+    }
+  },
+  deleteMarkers: function() {
+    this.clearMarkers();
+    this.markers = [];
+  },
+  clearMarkers: function() {
+    this.setMapOnAll(null);
+  },
+  showMarkers: function() {
+    this.setMapOnAll(this.map);
   },
   getNormalizedCoord: function(coord, zoom) {
     var y = coord.y;
@@ -187,3 +237,10 @@ app.AppView = Backbone.View.extend({
 function initApp() {
   new app.AppView();
 }
+
+$(function(){
+    $("[data-event='close-detail']").on("click", function() {
+      $(".app").removeClass("show-detail");
+      $(".vehicle").removeClass("active");
+    });
+});

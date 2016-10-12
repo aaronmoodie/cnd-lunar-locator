@@ -9,15 +9,17 @@
   <link rel="stylesheet" href="stylesheets/app.css">
 
   <script type="text/template" id="vehicle-item-template">
-    <div class="vehicle xs-border-top clearfix">
+    <div data-event="show-detail" class="vehicle xs-border-top clearfix">
       <div class="xs-float-left xs-mr2">
-        <img src="" height="46" width="46" alt="vehicle" class="fill-gray" />
+        <img src="" height="46" width="46" class="fill-gray" />
       </div>
       <div class="xs-overflow-hidden">
         <h2 class="xs-mb1"><%= name %></h2>
         <p class="xs-text-5 text-gray-lightest">Model: <%= model %></p>
         <p class="xs-text-5 text-gray-lightest">Power: <%= power_level_percent %>&#37;</p>
-        <div class="power-guage xs-fit xs-mt1 fill-gray-lighter"></div>
+        <div class="power-guage xs-fit xs-mt1 xs-relative">
+          <div class="xs-relative xs-full-height fill-<%= color %>" style="width:<%= power_level_percent %>%"></div>
+        </div>
       </div>
     </div>
   </script>
@@ -26,16 +28,17 @@
 <body>
   <div class="app">
     <div class="header xs-text-center fill-blue xs-absolute xs-t0 xs-l0">
+      <button data-event="close-detail" type="button" name="close" class="close-detail xs-p2 xs-absolute xs-t0 xs-l0">Back</button>
       <h2 class="bold xs-pt2 xs-pb2 text-white">Lunar Vehicles</h2>
     </div>
     <div class="content xs-absolute xs-overflow-hidden xs-b0 xs-l0">
-      <div class="vehicles xs-absolute xs-t0 xs-b0 xs-l0">
+      <div class="vehicles xs-absolute xs-t0 xs-b0">
         <div class="manual-locate">
           <p class="xs-text-center xs-text-5 text-gray-lightest xs-p2">Locate manually</p>
         </div>
 
       </div>
-      <div class="vehicle-detail xs-absolute xs-t0 xs-b0 xs-l0 xs-r0">
+      <div class="vehicle-detail xs-absolute xs-t0 xs-b0">
         <div id="map" class="map xs-full-height" style="width:100%"></div>
       </div>
     </div>
