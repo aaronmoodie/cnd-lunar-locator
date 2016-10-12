@@ -56,6 +56,21 @@
   width: auto;
   @include prefix((transition: left 0.3s ease-in-out));
 
+  .vehicle {
+    height: 7.25rem;
+    display: none;
+    @media (max-width: 52rem) {
+      display: block;
+    }
+  }
+
+  .map {
+    top: 0;
+    @media (max-width: 52rem) {
+      top: 7.25rem
+    }
+  }
+
   @media (max-width: 52rem) {
     left: 100%;
     right: auto;

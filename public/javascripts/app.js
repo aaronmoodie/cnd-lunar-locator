@@ -6,21 +6,25 @@
 // init app
 var app = app || {};
 
-app._attributes = {
-    cmdCentreCoords: {lat: 0.681400, lng: 23.460550}
-};
-
-app.attributes = function(prop, value) {
-    if (value === undefined) {
-        return this._attributes[prop];
-    } else {
-        this._attributes[prop] = value;
-    }
-};
-
-
 // Models & Collections
 // --------------------------------------------
+
+// Command Center model
+app.CommandCenter = Backbone.Model.extend({
+  defaults: {
+    lat: 0.681400,
+    long: 23.460550,
+    name: "Command Center",
+    model: "",
+    power_level_percent: null,
+    color: ""
+  },
+  initialize: function() {
+    this.set("coords", {
+      lat: this.get("lat"), lng: this.get("long")
+    });
+  }
+});
 
 // Vehicle model
 app.VehicleItem = Backbone.Model.extend({
@@ -33,6 +37,9 @@ app.VehicleItem = Backbone.Model.extend({
     } else {
       this.set("color", "red");
     }
+    this.set("coords", {
+      lat: this.get("lat"), lng: this.get("long")
+    });
   }
 
 });
@@ -69,28 +76,47 @@ app.VehicleItemView = Backbone.View.extend({
     $('.app').addClass('show-detail');
     $('.vehicle').removeClass('active');
     $element.addClass('active');
-    var latLong = {
-      lat: this.model.get('lat'),
-      lng: this.model.get('long')
-    };
-    app.mapView.addMarker(latLong);
+    app.vehicleDetailView.setModel(this.model);
+    app.mapView.render();
+    app.mapView.addMarker(this.model.get("coords"));
   }
 
 });
 
 // Vehicle detail view
 app.VehicleDetailView = Backbone.View.extend({
- tagName: 'div'
+  tagName: "div",
+  attributes: {
+    class: "xs-absolute xs-t0 xs-b0 xs-l0 xs-r0"
+  },
+  initialize: function() {
+    _.bindAll(this, 'render');
+    this.model.bind('change', this.render);
+    this.template = _.template($('#vehicle-detail-template').html());
+  },
+  render: function() {
+    var renderedContent = this.template(this.model.toJSON());
+    this.$el.html(renderedContent);
+    return this;
+  },
+  setModel: function(model) {
+    this.model = model;
+    this.render();
+  }
 });
 
 // Map view
 app.MapView = Backbone.View.extend({
 
-  initialize: function(options) {
-    var _this = this;
+  initialize: function() {
     this.markers = [];
+    this.render();
+  },
+
+  render: function(options) {
+    var _this = this;
     this.map = new google.maps.Map(document.getElementById('map'), {
-      center: options.cmdCentreCoords,
+      center: app.cmdCenter.get("coords"),
       zoom: 6,
       streetViewControl: false,
       mapTypeControlOptions: {
@@ -119,12 +145,8 @@ app.MapView = Backbone.View.extend({
     this.map.setMapTypeId('moon');
 
     // add initial maker to the map
-    this.addMarker(options.cmdCentreCoords);
+    this.addMarker(app.cmdCenter.get("coords"));
 
-    // center map on browser resize
-    // google.maps.event.addDomListener(window, 'resize', function() {
-    //   map.setCenter(center);
-    // });
   },
   addMarker: function(position) {
     this.deleteMarkers();
@@ -135,7 +157,6 @@ app.MapView = Backbone.View.extend({
     this.map.setCenter(position);
     this.markers.push(marker);
     this.showMarkers();
-
   },
   setMapOnAll: function(map) {
     for (var i = 0; i < this.markers.length; i++) {
@@ -214,21 +235,25 @@ app.AppView = Backbone.View.extend({
     app.Router = new app.Router();
     Backbone.history.start({pushState: true});
 
-    app.vehicleDetailView = new app.VehicleDetailView();
     app.vehicleList = new app.VehicleList();
     app.vehicleListView = new app.VehicleListView({
       collection: app.vehicleList
     });
 
-    app.mapView = new app.MapView({cmdCentreCoords:app.attributes('cmdCentreCoords')});
+    app.cmdCenter = new app.CommandCenter();
+    app.vehicleDetailView = new app.VehicleDetailView({
+      model: app.cmdCenter
+    });
+
 
     $(".vehicles").append(app.vehicleListView.el);
-    $(".vehicle-detail").append(app.vehicleDetailView.el);
+    $(".vehicle-detail").append(app.vehicleDetailView.render().el);
+
+    app.mapView = new app.MapView();
 
     app.vehicleList.fetch({reset: true});
 
-  },
-  initMap: function() {
+    console.log(app.cmdCenter.get("coords"));
 
   }
 
