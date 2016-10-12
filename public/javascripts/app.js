@@ -22,6 +22,8 @@ app.VehicleItem = Backbone.Model.extend({
   },
   initialize: function() {
     var power = this.get('power_level_percent');
+    // set power color deplending
+    // on vehicle percentage
     if (power > 50) {
       this.set("color", "green");
     } else if (power < 50 && power > 20) {
@@ -29,9 +31,11 @@ app.VehicleItem = Backbone.Model.extend({
     } else {
       this.set("color", "red");
     }
+    // create coords value
     this.set("coords", {
       lat: this.get("lat"), lng: this.get("long")
     });
+    // create distance value
     this.set("distance_to_cmd",
       this.calculateDistance(this.get("coords"), {lat: 0.681400, lng: 23.460550})
     );

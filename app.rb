@@ -11,6 +11,8 @@ class App < Sinatra::Base
   end
 
   helpers do
+    # loop through vehicles and
+    # combine JSON in to single responce
     def get_json
       array = []
       for i in 0..5
