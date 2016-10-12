@@ -40,7 +40,12 @@
         </div>
       </div>
     </div>
-    <div id="map" class="map xs-absolute xs-b0 xs-l0 xs-r0"></div>
+    <div class="map-wrapper xs-absolute xs-b0 xs-l0 xs-r0">
+      <div id="map" class="map xs-absolute xs-t0 xs-b0 xs-l0 xs-r0"></div>
+      <div class="xs-absolute xs-t3 xs-l0 xs-r0 xs-text-center">
+        <span class="distance fill-white xs-text-5 xs-pt1 xs-pb1 xs-pl2 xs-pr2"> <%= distance_to_cmd %>kms from Command Centre</span>
+      </div>
+    </div>
   </script>
 
 </head>
@@ -69,6 +74,6 @@
   <script src="javascripts/underscore.min.js"></script>
   <script src="javascripts/backbone.min.js"></script>
   <script src="javascripts/app.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8H6x1DrTfgb3dAvZ5B6_rHIk39j90Fpo&callback=initApp"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8H6x1DrTfgb3dAvZ5B6_rHIk39j90Fpo&libraries=geometry&callback=initApp"></script>
 </body>
 </html>

@@ -64,11 +64,15 @@
     }
   }
 
-  .map {
+  .map-wrapper {
     top: 0;
     @media (max-width: 52rem) {
       top: 7.25rem
     }
+  }
+
+  .distance {
+    border-radius: 20px;
   }
 
   @media (max-width: 52rem) {

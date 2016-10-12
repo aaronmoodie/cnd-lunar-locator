@@ -9,25 +9,16 @@ var app = app || {};
 // Models & Collections
 // --------------------------------------------
 
-// Command Center model
-app.CommandCenter = Backbone.Model.extend({
+
+// Vehicle model
+app.VehicleItem = Backbone.Model.extend({
   defaults: {
     lat: 0.681400,
     long: 23.460550,
     name: "Command Center",
     model: "",
-    power_level_percent: null,
-    color: ""
+    power_level_percent: null
   },
-  initialize: function() {
-    this.set("coords", {
-      lat: this.get("lat"), lng: this.get("long")
-    });
-  }
-});
-
-// Vehicle model
-app.VehicleItem = Backbone.Model.extend({
   initialize: function() {
     var power = this.get('power_level_percent');
     if (power > 50) {
@@ -40,6 +31,19 @@ app.VehicleItem = Backbone.Model.extend({
     this.set("coords", {
       lat: this.get("lat"), lng: this.get("long")
     });
+    this.set("distance_to_cmd",
+      this.calculateDistance(this.get("coords"), {lat: 0.681400, lng: 23.460550})
+    );
+  },
+  calculateDistance: function(position1, position2) {
+    var p1 = new google.maps.LatLng(position1);
+    var p2 = new google.maps.LatLng(position2);
+
+    // distance calculated as meters
+    // divide by 1000, and round to
+    // nearst whole KM.
+    var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(0);
+    return distance;
   }
 
 });
@@ -235,16 +239,15 @@ app.AppView = Backbone.View.extend({
     app.Router = new app.Router();
     Backbone.history.start({pushState: true});
 
-    app.vehicleList = new app.VehicleList();
-    app.vehicleListView = new app.VehicleListView({
-      collection: app.vehicleList
-    });
-
-    app.cmdCenter = new app.CommandCenter();
+    app.cmdCenter = new app.VehicleItem();
     app.vehicleDetailView = new app.VehicleDetailView({
       model: app.cmdCenter
     });
 
+    app.vehicleList = new app.VehicleList();
+    app.vehicleListView = new app.VehicleListView({
+      collection: app.vehicleList
+    });
 
     $(".vehicles").append(app.vehicleListView.el);
     $(".vehicle-detail").append(app.vehicleDetailView.render().el);
@@ -252,8 +255,6 @@ app.AppView = Backbone.View.extend({
     app.mapView = new app.MapView();
 
     app.vehicleList.fetch({reset: true});
-
-    console.log(app.cmdCenter.get("coords"));
 
   }
 
