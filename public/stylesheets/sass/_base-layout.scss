@@ -92,7 +92,7 @@
     }
   }
 
-  &.hide-detail {
+  &.hide-info {
     .vehicle {
       @media (max-width: 52rem) {
         display: none;
@@ -107,7 +107,7 @@
     }
   }
 
-  &.hide-detail {
+  &.hide-info {
     .map-wrapper {
       @media (max-width: 52rem) {
         top: 0;

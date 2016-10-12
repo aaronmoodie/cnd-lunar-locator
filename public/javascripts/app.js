@@ -79,7 +79,7 @@ app.VehicleItemView = Backbone.View.extend({
     var $element = $(event.currentTarget);
     $('.app').addClass('show-detail');
     $('.vehicle').removeClass('active');
-    $(".vehicle-detail").removeClass("hide-detail");
+    $(".vehicle-detail").removeClass("hide-info");
     $element.addClass('active');
     app.vehicleDetailView.setModel(this.model);
     app.mapView.render();
@@ -143,7 +143,7 @@ app.ManualLocate = Backbone.View.extend({
     var lng = parseInt(this.$('input[name="lng"]').val());
 
     $(".app").addClass("show-detail");
-    $(".vehicle-detail").addClass("hide-detail");
+    $(".vehicle-detail").addClass("hide-info");
     var manualModel = new app.VehicleItem({lat:lat, long:lng});
     app.vehicleDetailView.setModel(manualModel);
     app.mapView.render();
@@ -309,7 +309,8 @@ function initApp() {
 }
 
 $(function(){
-    $("[data-event='close-detail']").on("click", function() {
+    $("[data-event='close-detail']").on("click", function(event) {
+      event.preventDefault();
       $(".app").removeClass("show-detail");
       $(".vehicle").removeClass("active");
     });
