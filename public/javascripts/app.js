@@ -79,6 +79,7 @@ app.VehicleItemView = Backbone.View.extend({
     var $element = $(event.currentTarget);
     $('.app').addClass('show-detail');
     $('.vehicle').removeClass('active');
+    $(".vehicle-detail").removeClass("hide-detail");
     $element.addClass('active');
     app.vehicleDetailView.setModel(this.model);
     app.mapView.render();
@@ -106,6 +107,47 @@ app.VehicleDetailView = Backbone.View.extend({
   setModel: function(model) {
     this.model = model;
     this.render();
+  }
+});
+
+app.ManualLocate = Backbone.View.extend({
+  targetElement: '.vehicles',
+  tagName: "div",
+  attributes: {
+    class: "manual-locate xs-border-bottom xs-overflow-hidden xs-absolute xs-t0 xs-l0 xs-r0"
+  },
+  events: {
+    'click [data-event="show-form"]': 'showForm',
+    'click [data-event="hide-form"]': 'hideForm',
+    'click [data-event="locate-position"]': 'locatePosition',
+  },
+  initialize: function() {
+    this.template = _.template($('#manual-locate-template').html());
+    this.render();
+  },
+  render: function() {
+    this.$el.html(this.template());
+    $(this.targetElement).append(this.$el);
+  },
+  showForm: function(event) {
+    event.preventDefault();
+    $(".vehicles").addClass("show-form");
+  },
+  hideForm: function(event) {
+    event.preventDefault();
+    $(".vehicles").removeClass("show-form");
+  },
+  locatePosition: function(event) {
+    event.preventDefault();
+    var lat = parseInt(this.$('input[name="lat"]').val());
+    var lng = parseInt(this.$('input[name="lng"]').val());
+
+    $(".app").addClass("show-detail");
+    $(".vehicle-detail").addClass("hide-detail");
+    var manualModel = new app.VehicleItem({lat:lat, long:lng});
+    app.vehicleDetailView.setModel(manualModel);
+    app.mapView.render();
+    app.mapView.addMarker(manualModel.get("coords"));
   }
 });
 
@@ -198,7 +240,7 @@ app.MapView = Backbone.View.extend({
 app.VehicleListView = Backbone.View.extend({
   tagName: 'ul',
   attributes: {
-    class: 'list-unstyled xs-border-bottom xs-full-height xs-overflow-auto'
+    class: 'vehicles-list list-unstyled xs-border-bottom xs-absolute xs-b0 xs-l0 xs-r0 xs-overflow-auto xs-pb2'
   },
   initialize: function() {
     _.bindAll(this, 'render');
@@ -238,6 +280,8 @@ app.AppView = Backbone.View.extend({
 
     app.Router = new app.Router();
     Backbone.history.start({pushState: true});
+
+    new app.ManualLocate();
 
     app.cmdCenter = new app.VehicleItem();
     app.vehicleDetailView = new app.VehicleDetailView({

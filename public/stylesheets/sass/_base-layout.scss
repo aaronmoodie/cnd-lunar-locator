@@ -37,7 +37,31 @@
   }
 }
 
+.manual-locate {
+  height: 3.3rem;
+  @include prefix((transition: height 0.3s ease-in-out));
+
+  .show-form & {
+    height: 18rem;
+  }
+
+  form {
+    padding: 0 0.875rem 0.875rem 0.875rem;
+  }
+}
+
+.vehicles-list {
+  margin-top: -1px;
+  top: 3.3rem;
+  @include prefix((transition: top 0.3s ease-in-out));
+
+  .show-form & {
+    top: 18rem;
+  }
+}
+
 .vehicle {
+  cursor: pointer;
   padding: 0.875rem;
 
   h2 {
@@ -46,6 +70,10 @@
 
   &.active {
     background-color: #f6f6f6;
+  }
+
+  &:first-child {
+    border: none;
   }
 }
 
@@ -64,10 +92,26 @@
     }
   }
 
+  &.hide-detail {
+    .vehicle {
+      @media (max-width: 52rem) {
+        display: none;
+      }
+    }
+  }
+
   .map-wrapper {
     top: 0;
     @media (max-width: 52rem) {
       top: 7.25rem
+    }
+  }
+
+  &.hide-detail {
+    .map-wrapper {
+      @media (max-width: 52rem) {
+        top: 0;
+      }
     }
   }
 

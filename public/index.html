@@ -25,6 +25,27 @@
     </div>
   </script>
 
+  <!-- manual locate template -->
+  <script type="text/template" id="manual-locate-template">
+    <p class="xs-text-center xs-text-5 text-gray-lightest">
+      <a data-event="show-form" href="#" class="link-gray xs-p2 xs-block">Locate manually</a>
+    </p>
+    <form>
+      <div class="xs-mb2">
+        <label class="form-label xs-text-5">Latitude</label>
+        <input type="text" name="lat" class="text-input rounded" style="width:100%">
+      </div>
+      <div class="xs-mb3">
+        <label class="form-label xs-text-5">Longitude</label>
+        <input type="text" name="lng" class="text-input rounded" style="width:100%">
+      </div>
+      <div class="clearfix">
+        <button data-event="hide-form" class="button button--secondary" style="width:48%">Close</button>
+        <button data-event="locate-position" class="button xs-float-right" style="width:48%">Locate</button>
+      </div>
+    </form>
+  </script>
+
   <!-- vehicle detail template -->
   <script type="text/template" id="vehicle-detail-template">
     <div class="vehicle xs-border-bottom clearfix xs-absolute xs-t0 xs-l0 xs-r0">
@@ -58,13 +79,10 @@
     <div class="content xs-absolute xs-overflow-hidden xs-b0 xs-l0">
       <!-- Vehicle items container -->
       <div class="vehicles xs-absolute xs-t0 xs-b0">
-        <div class="manual-locate">
-          <p class="xs-text-center xs-text-5 text-gray-lightest xs-p2">Locate manually</p>
-        </div>
 
       </div>
       <!-- Vehicle detail container -->
-      <div class="vehicle-detail xs-absolute xs-t0 xs-b0 fill-white">
+      <div class="vehicle-detail hide-detail xs-absolute xs-t0 xs-b0 fill-white">
 
       </div>
     </div>
