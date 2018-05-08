@@ -1,5 +1,18 @@
 # CND Lunar Locator
 
+#### The Task
+
+Create a Ruby on Rails web application that allows CND staff to choose from the 6 vehicles and obtain their location by calling the API specified above. 
+
+The tool should also accept manual input of lunar lat/long to:
+     
+1. Show where the vehicle is on the lunar map; and       
+2. Calculate the distance from the CND Command Centre (located at the Apollo 11 landing site at lat:0.681400, long: 23.460550) to the vehicle or coordinates supplied.
+
+CND Staff are notoriously fickle and won't use a tool that is difficult to use or difficult to look at. This behaviour costs the business millions in inefficiencies, as the staff will wander around aimlessly looking for cars based purely on “gut-feel”.
+
+#### Submission
+
 This is my Lunar Locator app, built for the Car Next Door programming assignment. The working version is viewable via the Heroku link below. Visually, I got this to a reasonable place, but my code could have been a bit better. I chose to use Backbone served via a Sinatra app, as this is what I was most familiar with. With a little more time I would have looked at adding a package manager for the Javascript, which would have let me break the main app file up. The commenting and overall code structure could be cleaner as well.
 
 #### Huroku app
